@@ -5,9 +5,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Attach (CPP)",
+      "type": "cppdbg",
+      "request": "attach",
+      "program": "/usr/local/bin/node",
+      "processId": "${command:pickProcess}",
+      "MIMode": "lldb"
+    },
+    {
       "type": "node",
       "request": "launch",
-      "name": "Launch js",
+      "name": "Launch (JS)",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
@@ -17,18 +25,27 @@
       "port": 9229
     },
     {
-      "name": "Attach to cpp",
+      "name": "Launch (CPP)",
       "type": "cppdbg",
-      "request": "attach",
-      "program": "${workspaceFolder}/build/Debug/exampleaddon.node",
-      "processId": "${command:pickProcess}",
-      "MIMode": "lldb"
+      "request": "launch",
+      "program": "/usr/local/bin/node",
+      "args": ["${workspaceFolder}/index.js"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [
+        {
+          "name": "NODE_ENV",
+          "value": "debug"
+        }
+      ],
+      "externalConsole": false,
+      "MIMode": "lldb",
     }
   ],
   "compounds": [
     {
-      "name": "Addon",
-      "configurations": ["Launch js", "Attach to cpp"],
+      "name": "Compound",
+      "configurations": ["Launch (JS)", "Attach (CPP)"]
     }
   ]
 }

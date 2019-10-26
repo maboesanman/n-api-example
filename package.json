@@ -5,12 +5,12 @@
   "main": "index.js",
   "gypfile": true,
   "scripts": {
-    "start": "node index.release.js",
-    "debug": "node --nolazy --inspect-brk index.debug.js",
-    "build": "node-gyp build",
-    "build:debug": "node-gyp build --debug",
-    "rebuild": "node-gyp rebuild",
-    "rebuild:rebuild": "node-gyp rebuild --debug",
+    "start": "NODE_ENV=release node index.js",
+    "debug": "NODE_ENV=debug node --nolazy --inspect-brk index.js",
+    "build": "node-gyp build -j max ",
+    "build:debug": "node-gyp build -j max --debug",
+    "rebuild": "node-gyp rebuild -j max",
+    "rebuild:debug": "node-gyp rebuild -j max --debug",
     "clean": "node-gyp clean"
   },
   "author": "Mason Boeman",
