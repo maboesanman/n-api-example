@@ -1,0 +1,24 @@
+{
+  "name": "n-api-example",
+  "version": "1.0.0",
+  "description": "example implementation of an n-api based node addon",
+  "main": "index.js",
+  "gypfile": true,
+  "scripts": {
+    "start": "node index.release.js",
+    "debug": "node --nolazy --inspect-brk index.debug.js",
+    "build": "node-gyp build",
+    "build:debug": "node-gyp build --debug",
+    "rebuild": "node-gyp rebuild",
+    "rebuild:rebuild": "node-gyp rebuild --debug",
+    "clean": "node-gyp clean"
+  },
+  "author": "Mason Boeman",
+  "license": "ISC",
+  "devDependencies": {
+    "node-gyp": "^6.0.0"
+  },
+  "dependencies": {
+    "node-addon-api": "^1.7.1"
+  }
+}
